@@ -3,4 +3,5 @@
 public interface ISupplierDialog
 {
     void AddSupplier();
+    void ShowSuppliers();
 }

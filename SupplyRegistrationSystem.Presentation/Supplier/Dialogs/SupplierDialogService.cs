@@ -14,36 +14,52 @@ public class SupplierDialogService : ISupplierDialog
 
     public void AddSupplier()
     {
-        string companyName = ReadRequired("Ange företagsnamn: ");
-        string phoneNumber = ReadRequired("Ange telefonnummer: ");
-        string billingAddress = ReadRequired("Ange faktureringsadress: ");
-        string organizationNumber = ReadRequired("Ange organisationsnummer: ");
+        string answer;
 
-        SupplierModel supplier = new()
+        do
         {
-            CompanyName = companyName,
-            PhoneNumber = phoneNumber,
-            BillingAddress = billingAddress,
-            OrganizationNumber = organizationNumber
-        };
+            string companyName = ReadRequired("Ange företagsnamn: ");
+            string phoneNumber = ReadRequired("Ange telefonnummer: ");
+            string billingAddress = ReadRequired("Ange faktureringsadress: ");
+            string organizationNumber = ReadRequired("Ange organisationsnummer: ");
 
-        _supplierService.AddSupplier(supplier);
+            SupplierModel supplier = new()
+            {
+                CompanyName = companyName,
+                PhoneNumber = phoneNumber,
+                BillingAddress = billingAddress,
+                OrganizationNumber = organizationNumber
+            };
 
-        Console.WriteLine();
-        Console.WriteLine($"Leverantören {supplier.CompanyName} har lagts till.");
+            _supplierService.AddSupplier(supplier);
 
+            Console.WriteLine();
+            Console.WriteLine($"Leverantören {supplier.CompanyName} har lagts till.");
+            Console.WriteLine();
+
+            Console.Write("Vill du lägga till en till leverantör? (ja/nej): ");
+            answer = Console.ReadLine()?.Trim().ToLower() ?? "";
+
+            Console.WriteLine();
+
+        } while (answer == "ja");
+
+        ShowSuppliers();
+    }
+
+    public void ShowSuppliers()
+    {
         List<SupplierModel> suppliers = _supplierService.GetSuppliers();
 
-        Console.WriteLine();
         Console.WriteLine("Alla registrerade leverantörer:");
 
-        foreach (SupplierModel item in suppliers)
+        foreach (SupplierModel supplier in suppliers)
         {
             Console.WriteLine();
-            Console.WriteLine($"Företagsnamn: {item.CompanyName}");
-            Console.WriteLine($"Telefonnummer: {item.PhoneNumber}");
-            Console.WriteLine($"Faktureringsadress: {item.BillingAddress}");
-            Console.WriteLine($"Organisationsnummer: {item.OrganizationNumber}");
+            Console.WriteLine($"Företagsnamn: {supplier.CompanyName}");
+            Console.WriteLine($"Telefonnummer: {supplier.PhoneNumber}");
+            Console.WriteLine($"Faktureringsadress: {supplier.BillingAddress}");
+            Console.WriteLine($"Organisationsnummer: {supplier.OrganizationNumber}");
         }
     }
 
