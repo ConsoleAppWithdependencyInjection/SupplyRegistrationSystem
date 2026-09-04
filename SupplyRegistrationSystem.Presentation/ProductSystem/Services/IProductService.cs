@@ -4,7 +4,7 @@ namespace SupplyRegistrationSystem.Presentation.ProductSystem.Services;
 
 public interface IProductService
 {
-    ProductModel CreateProduct(string productNumber, string productName, string productPrice, DateTime productRegistration);
+    ProductModel AddProduct(string productNumber, string productName, string productPrice, DateTime productRegistration);
 
     IReadOnlyList<ProductModel> GetAllProducts();
 }

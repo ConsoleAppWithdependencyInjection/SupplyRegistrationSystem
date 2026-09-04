@@ -18,7 +18,7 @@ public class InMemoryProductService : IProductService
         return _productsList;
             
     }
-    public ProductModel CreateProduct(
+    private ProductModel CreateProduct(
     string productNumber,
     string productName,
     string productPrice,
