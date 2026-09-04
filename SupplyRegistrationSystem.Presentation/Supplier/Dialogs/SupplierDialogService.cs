@@ -14,17 +14,10 @@ public class SupplierDialogService : ISupplierDialog
 
     public void AddSupplier()
     {
-        Console.Write("Ange företagsnamn: ");
-        string companyName = Console.ReadLine() ?? "";
-
-        Console.Write("Ange telefonnummer: ");
-        string phoneNumber = Console.ReadLine() ?? "";
-
-        Console.Write("Ange faktureringsadress: ");
-        string billingAddress = Console.ReadLine() ?? "";
-
-        Console.Write("Ange organisationsnummer: ");
-        string organizationNumber = Console.ReadLine() ?? "";
+        string companyName = ReadRequired("Ange företagsnamn: ");
+        string phoneNumber = ReadRequired("Ange telefonnummer: ");
+        string billingAddress = ReadRequired("Ange faktureringsadress: ");
+        string organizationNumber = ReadRequired("Ange organisationsnummer: ");
 
         SupplierModel supplier = new()
         {
@@ -41,5 +34,24 @@ public class SupplierDialogService : ISupplierDialog
         Console.WriteLine($"Telefonnummer: {supplier.PhoneNumber}");
         Console.WriteLine($"Faktureringsadress: {supplier.BillingAddress}");
         Console.WriteLine($"Organisationsnummer: {supplier.OrganizationNumber}");
+    }
+
+    private string ReadRequired(string message)
+    {
+        string input;
+
+        do
+        {
+            Console.Write(message);
+            input = Console.ReadLine() ?? "";
+
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("Fältet får inte vara tomt.");
+            }
+
+        } while (string.IsNullOrWhiteSpace(input));
+
+        return input;
     }
 }
