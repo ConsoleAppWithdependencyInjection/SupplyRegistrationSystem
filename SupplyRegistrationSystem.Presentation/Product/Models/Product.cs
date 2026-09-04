@@ -1,5 +1,4 @@
 ﻿namespace SupplyRegistrationSystem.Presentation.Product.Models;
 
-public class Product
-{
-}
+public record Product(string productNumber, string productName, string productPrice, DateTime prodoctRegistration);
+
