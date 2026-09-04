@@ -5,5 +5,5 @@ public class ProductModel(string productNumber, string productName, string produ
     string productId { get; set; } = productNumber;
     string productName { get; set; } = productName;
     string productPrice { get; set; } = productPrice;
-    DateTime ProductRegistration { get; set; } = productRegistration;
+    DateTime productRegistration { get; set; } = productRegistration;
 }
