@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Customer\Dialog\" />
+    <Folder Include="Customer\Services\" />
+  </ItemGroup>
+
 </Project>
