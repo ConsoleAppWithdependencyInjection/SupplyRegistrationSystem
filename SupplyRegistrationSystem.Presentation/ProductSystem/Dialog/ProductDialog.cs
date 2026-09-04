@@ -7,21 +7,20 @@ public class ProductDialog(IProductService productService) : IProductDialog
     public void AddProductDialog()
     {
         Console.Clear();
-        Console.WriteLine("### ADD CUSTOMER ###");
+        Console.WriteLine("### ADD PRODUCT ###");
 
-        InputDialog("Enter customer name", out string productNumber);
-        InputDialog("Enter customer email", out string productName);
-        InputDialog("Enter customer email", out string productPrice);
+        InputDialog("Enter Product LOTR-Number", out string productNumber);
+        InputDialog("Enter Product name", out string productName);
+        InputDialog("Enter Product price", out string productPrice);
 
         var registration = DateTime.Now;
         
-
         var product = productService.CreateProduct(productNumber, productName, productPrice, registration);
 
         if (product is not null)
-            Console.WriteLine($"Customer with id '{productNumber}' was created");
+            Console.WriteLine($"Customer with LOTR-Number '{productNumber}' was created");
         else
-            Console.WriteLine($"Unable to create new customer");
+            Console.WriteLine($"Unable to create new product");
 
         Console.ReadKey();
     }
@@ -29,7 +28,7 @@ public class ProductDialog(IProductService productService) : IProductDialog
     public void ShowAllProducts()
     {
         Console.Clear();
-        Console.WriteLine("### CUSTOMER LIST ###");
+        Console.WriteLine("### PRODUCT LIST ###");
 
         var products = productService.GetAllProducts();
         foreach (var product in products)
