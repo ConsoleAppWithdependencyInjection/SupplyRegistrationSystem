@@ -1,6 +1,7 @@
 ﻿namespace SupplyRegistrationSystem.Presentation.Customer.Models;
 
-internal class Customer
-{
-
-}
+public record Customer
+(
+    string Name,
+    string Email
+);
