@@ -1,6 +1,5 @@
 ﻿using SupplyRegistrationSystem.Presentation.Customers.Models;
-
-namespace SupplyRegistrationSystem.Presentation.Customers.Models;
+namespace SupplyRegistrationSystem.Presentation.Customers.Services;
 
 public interface ICustomerService
 {
