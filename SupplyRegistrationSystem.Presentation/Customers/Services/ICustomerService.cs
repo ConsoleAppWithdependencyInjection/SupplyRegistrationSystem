@@ -4,6 +4,9 @@ namespace SupplyRegistrationSystem.Presentation.Customers.Models;
 
 public interface ICustomerService
 {
-    void AddCustomer(Customer customer);
+    Customer AddCustomer(string name, string email);
+
+
+    IReadOnlyList<Customer> GetAllCustomers();
 }
 
