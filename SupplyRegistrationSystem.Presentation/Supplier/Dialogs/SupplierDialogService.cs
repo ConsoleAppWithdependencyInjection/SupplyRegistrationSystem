@@ -31,9 +31,20 @@ public class SupplierDialogService : ISupplierDialog
 
         Console.WriteLine();
         Console.WriteLine($"Leverantören {supplier.CompanyName} har lagts till.");
-        Console.WriteLine($"Telefonnummer: {supplier.PhoneNumber}");
-        Console.WriteLine($"Faktureringsadress: {supplier.BillingAddress}");
-        Console.WriteLine($"Organisationsnummer: {supplier.OrganizationNumber}");
+
+        List<SupplierModel> suppliers = _supplierService.GetSuppliers();
+
+        Console.WriteLine();
+        Console.WriteLine("Alla registrerade leverantörer:");
+
+        foreach (SupplierModel item in suppliers)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"Företagsnamn: {item.CompanyName}");
+            Console.WriteLine($"Telefonnummer: {item.PhoneNumber}");
+            Console.WriteLine($"Faktureringsadress: {item.BillingAddress}");
+            Console.WriteLine($"Organisationsnummer: {item.OrganizationNumber}");
+        }
     }
 
     private string ReadRequired(string message)

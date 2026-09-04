@@ -10,4 +10,9 @@ public class SupplierService : ISupplierService
     {
         _suppliers.Add(supplier);
     }
+
+    public List<SupplierModel> GetSuppliers()
+    {
+        return _suppliers;
+    }
 }
